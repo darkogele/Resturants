@@ -12,9 +12,9 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-  "Name": "Spicy Delights 2",
+  "Name": "Spicy Delights 4",
   "Description": "A culinary experience line no other",
-  "Category": "Indian",
+  "Category": "Italian",
   "HasDelivery": true,
   "ContactEmail": "info@gourmetdelights.com",
   "ContactNumber": "123-456-7890",
