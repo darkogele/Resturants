@@ -4,6 +4,23 @@ GET {{Restaurants.API_HostAddress}}/api/restaurants
 
 ###
 
-GET {{Restaurants.API_HostAddress}}/api/restaurants/1
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants
+Content-Type: application/json
+
+{
+  "Name": "Spicy Delights 2",
+  "Description": "A culinary experience line no other",
+  "Category": "Indian",
+  "HasDelivery": true,
+  "ContactEmail": "info@gourmetdelights.com",
+  "ContactNumber": "123-456-7890",
+  "City":"Metropolis",
+  "Street":"123 Main St",
+  "PostalCode" : "12-345"
+}
 
 ###
