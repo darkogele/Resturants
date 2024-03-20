@@ -19,7 +19,7 @@ public class UpdateRestaurantCommandHandler(
             return false;
         }
 
-        logger.LogInformation("Updating restaurant with id {Id}", request.Id);
+        logger.LogInformation("Updating restaurant with id {Id} with {@UpdateRestaurant}", request.Id, request);
 
         mapper.Map(request, restaurant);
 
