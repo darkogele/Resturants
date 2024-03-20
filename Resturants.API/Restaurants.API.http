@@ -28,3 +28,16 @@ Content-Type: application/json
 DELETE {{Restaurants.API_HostAddress}}/api/restaurants/4
 
 ```
+
+###
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/3
+Content-Type: application/json
+
+{
+    "Id": 3,
+    "Name": "Spicy Delights improved",
+    "Description": "A culinary experience line no other",
+    "Category": "Macedonian",
+    "HasDelivery": true,
+    "ContactEmail": "darkogele@hotmail.com"
+}

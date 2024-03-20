@@ -2,14 +2,14 @@
 
 namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 
-public class CreateRestaurantDtoValidator : AbstractValidator<CreateRestaurantCommand>
+public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaurantCommand>
 {
     private readonly string[] _categories =
     [
         "FastFood", "Traditional", "Vegetarian", "Vegan", "Italian", "Mexican", "Chinese", "Japanese", "American"
     ];
 
-    public CreateRestaurantDtoValidator()
+    public CreateRestaurantCommandValidator()
     {
         RuleFor(x => x.Name)
             .Length(3, 100).NotEmpty();

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Application.Restaurants.Commands.DeleteRestaurant;
+using Restaurants.Application.Restaurants.Commands.UpdateRestaurant;
 using Restaurants.Application.Restaurants.Queries.GetAllRestaurants;
 using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 
@@ -30,6 +31,15 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     {
         var id = await mediator.Send(command);
         return CreatedAtAction(nameof(GetById), new { id }, null);
+    }
+
+    [HttpPatch("{id:int}")]
+    public async Task<IActionResult> UpdateRestaurant(int id, UpdateRestaurantCommand command)
+    {
+        if (id != command.Id)
+            return BadRequest("Id in the URL and in the body do not match or are missing.");
+        var isUpdated = await mediator.Send(command);
+        return isUpdated is false ? NotFound() : NoContent();
     }
 
     [HttpDelete("{id:int}")]
