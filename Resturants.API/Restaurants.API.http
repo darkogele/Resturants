@@ -12,7 +12,7 @@ POST {{Restaurants.API_HostAddress}}/api/restaurants
 Content-Type: application/json
 
 {
-  "Name": "Spicy Delights 4",
+  "Name": "Spicy Delights 10",
   "Description": "A culinary experience line no other",
   "Category": "Italian",
   "HasDelivery": true,
@@ -24,3 +24,7 @@ Content-Type: application/json
 }
 
 ###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/4
+
+```
