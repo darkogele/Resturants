@@ -41,8 +41,9 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     {
         if (id != command.Id)
             return BadRequest("Id in the URL and in the body do not match or are missing.");
-        var isUpdated = await mediator.Send(command);
-        return isUpdated is false ? NotFound() : NoContent();
+        await mediator.Send(command);
+
+        return NoContent();
     }
 
     [HttpDelete("{id:int}")]
@@ -50,7 +51,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> DeleteRestaurant(int id)
     {
-        var isDeleted = await mediator.Send(new DeleteRestaurantCommand(id));
-        return isDeleted is false ? NotFound() : NoContent();
+        await mediator.Send(new DeleteRestaurantCommand(id));
+        return NoContent();
     }
 }
