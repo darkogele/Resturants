@@ -24,7 +24,7 @@ public class RestaurantsController(IMediator mediator) : ControllerBase
     public async Task<ActionResult<RestaurantDto>> GetById(int id)
     {
         var restaurantById = await mediator.Send(new GetRestaurantByIdQuery(id));
-        return restaurantById is null ? NotFound() : Ok(restaurantById);
+        return Ok(restaurantById);
     }
 
     [HttpPost]

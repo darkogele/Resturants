@@ -1,7 +1,7 @@
 using System.Net;
 using Restaurants.Domain.Exceptions;
 
-namespace Restaurants.API.Middleware;
+namespace Restaurants.API.Middlewares;
 
 public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : IMiddleware
 {
