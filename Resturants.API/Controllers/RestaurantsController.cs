@@ -9,8 +9,8 @@ using Restaurants.Application.Restaurants.Queries.GetRestaurantById;
 
 namespace Restaurants.API.Controllers;
 
-[Route("api/[controller]")]
 [ApiController]
+[Route("api/[controller]")]
 public class RestaurantsController(IMediator mediator) : ControllerBase
 {
     [HttpGet]

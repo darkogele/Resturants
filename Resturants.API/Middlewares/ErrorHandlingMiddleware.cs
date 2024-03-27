@@ -1,5 +1,5 @@
-using System.Net;
 using Restaurants.Domain.Exceptions;
+using System.Net;
 
 namespace Restaurants.API.Middlewares;
 
@@ -14,7 +14,7 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
         catch (NotFoundException notFound)
         {
             context.Response.StatusCode = (int)HttpStatusCode.NotFound;
-            await context.Response.WriteAsync(notFound.Message);
+            await context.Response.WriteAsJsonAsync(notFound.Message);
 
             logger.LogWarning(notFound.Message);
         }
