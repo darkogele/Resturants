@@ -18,7 +18,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dishes\Queries\" />
     <Folder Include="Restaurants\Validators\" />
   </ItemGroup>
 
