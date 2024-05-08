@@ -21,7 +21,7 @@ public class UpdateUserDetailsCommandHandler(
 
         if (dbUser == null)
         {
-            throw new NotFoundException(nameof(User), user!.Id);
+            throw new NotFoundException(nameof(User), user.Id);
         }
 
         dbUser.Nationality = request.Nationality;
