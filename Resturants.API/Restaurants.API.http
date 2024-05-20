@@ -1,43 +1,121 @@
-﻿@Restaurants.API_HostAddress = https://localhost:7285
+﻿@host = https://localhost
+@port = 7285
+@token = CfDJ8AHCTjzdeFVOpyQbYbe9sOLUgdni8s-qL7j8ukh29Q3xPjuzm-WXMNyW82pJ8H4ASJEEqjiVWEQZLe3eY4cEXgq0PUEy-T2FVbzQ2WlVarNJ126I6lK5sY-NW5Ls4BeW6s2XC1h1wnGnLZjuQrS3c4cjodmyD-4WfMY8y6zS9x0L6R1LDiiptL5C8FfA7XFlS-YjhLze3rHIyjnAFd479lNL61hOlTHEdme9Q72hrJCjAAea7sTGFY_5ZNA07fJ6bX3v2pj4Fub0HqMktOAkIPtCKXdnSMJk1UEd1FgLI4I2msA6am5ouC_HjkvRF3VqcMMBUM62wFDLIXrjr1ncvn8W77HK8OjGaa2cgRFc-I2xhwiLMlPgP4RqmsfKZHwJFbtdtmQtHh3LK1O-uk4zm0pCmemfHX4MaETibMmTIt6Hp_o8gFjnGAUN03qosNtQ7GgGLOu2qG63XwqjLJTiBHNrPmHobqMznyO6TGl5vwRGfdThK8Kmy9FZbKDHePo73ek2eS1VyAhOfI5ODokMq4ru0ds-EmXXMb_VKg0Urovb3vPbVDywtYoN9at67W7htfVjrWO6kYrNGp3cJ9qDL-YFZ02tZnE3SkLCUVIFDKpT_yWAw_e7oGXG0lH5vrXWsRsoK8gzr7CHzBwuKxz3sgiJX21YWXo6y-9KKUzKwfFgt1xnMOi1zLkfqHfTmIVAb83U_PD3ONLcoZg6VOJO_zCHtt2I6llHAccBOrs_ls0B4ZGQIkhglPcW3vqIp5xpwb3cQ_AissvGEAzhGQECKHk84LOJ2QkcUEyCr5MLOG2HqffY5_JNi_J1_PzTj_fnElYU8CLrsuJGFmKA172U9p-lon2UspAX4eamkShMy7ULfBK2X8uTBKifgQBT0LnQ1Q
+
+@Restaurants.API_HostAddress = https://localhost:7285
+
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 
 ###
 
 GET {{Restaurants.API_HostAddress}}/api/restaurants/3
+Authorization: Bearer {{token}}
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+Authorization: Bearer {{token}}
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
+
+###
+
+GET {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes/3
+
+
+###
+
+DELETE {{Restaurants.API_HostAddress}}/api/restaurants/1009
+Authorization: Bearer {{token}}
+
 
 ###
 
 POST {{Restaurants.API_HostAddress}}/api/restaurants
+Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-  "Name": "Spicy Delights 10",
-  "Description": "A culinary experience line no other",
-  "Category": "Italian",
+  "Name": "Owner restaurant",
+  "Description": "A cozy restaurant serving a variety of delicious dishes.",
+  "Category": "Indian",
   "HasDelivery": true,
-  "ContactEmail": "info@gourmetdelights.com",
-  "ContactNumber": "123-456-7890",
-  "City":"Metropolis",
-  "Street":"123 Main St",
-  "PostalCode" : "12-345"
+  "ContactEmail": "info@test.com",
+  "ContactNumber": "555-1234",
+  "City": "New York",
+  "Street": "123 Main Street",
+  "PostalCode": "10-010"
 }
 
 ###
 
-DELETE {{Restaurants.API_HostAddress}}/api/restaurants/4
+GET https://localhost:7005/api/restaurants/1009
+Authorization: Bearer {{token}}
 
-```
 
 ###
-PATCH {{Restaurants.API_HostAddress}}/api/restaurants/3
+
+
+PATCH {{Restaurants.API_HostAddress}}/api/restaurants/1009
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Name": "Updated name",
+  "Description": "This is a sample restaurant description.",
+  "HasDelivery": false
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/restaurants/3/dishes
 Content-Type: application/json
 
 {
-    "Id": 3,
-    "Name": "Spicy Delights improved",
-    "Description": "A culinary experience line no other",
-    "Category": "Macedonian",
-    "HasDelivery": true,
-    "ContactEmail": "darkogele@hotmail.com"
+  "Name": "Spaghetti Bolognese",
+  "Description": "Classic Italian pasta dish with rich meat sauce",
+  "Price": 12.99,
+  "KiloCalories": 750
 }
+
+###
+
+GET https://localhost:7005/api/restaurants/3/dishes/7
+
+
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/register
+Content-Type: application/json
+
+{
+  "email": "user@test.com",
+  "password": "Password1!"
+}
+
+###
+
+POST {{Restaurants.API_HostAddress}}/api/identity/login
+Content-Type: application/json
+
+{
+  "email": "admin@test.com",
+  "password": "Password1!"
+}
+###
+
+PATCH {{Restaurants.API_HostAddress}}/api/identity/user
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "Nationality": "French",
+  "DateOfBirth": "2010-01-01"
+}
+
+###
