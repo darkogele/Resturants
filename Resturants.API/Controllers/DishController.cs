@@ -51,4 +51,10 @@ public class DishController(IMediator mediator) : ControllerBase
         await mediator.Send(new DeleteDishCommand(restaurantId, dishId));
         return NoContent();
     }
+
+    [HttpGet("test")]
+    public IActionResult Test()
+    {
+        return Ok("Test");
+    }
 }

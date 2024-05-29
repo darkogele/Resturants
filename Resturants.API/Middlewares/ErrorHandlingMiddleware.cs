@@ -18,6 +18,13 @@ public class ErrorHandlingMiddleware(ILogger<ErrorHandlingMiddleware> logger) : 
 
             logger.LogWarning(notFound.Message);
         }
+        catch (ForbidException forbid)
+        {
+            context.Response.StatusCode = (int)HttpStatusCode.Forbidden;
+            await context.Response.WriteAsJsonAsync("You are not authorized to perform this action");
+
+            logger.LogWarning(forbid.Message);
+        }
         catch (Exception ex)
         {
             logger.LogError(ex, ex.Message);
