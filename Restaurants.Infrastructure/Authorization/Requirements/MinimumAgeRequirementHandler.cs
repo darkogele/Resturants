@@ -21,8 +21,8 @@ public class MinimumAgeRequirementHandler(ILogger<MinimumAgeRequirementHandler> 
             context.Fail();
             return Task.CompletedTask;
         }
-        
-        if (currentUser.DateOfBirth.Value.AddYears(requirement.MinimumAge) <= DateOnly.FromDateTime(DateTime.Today)) 
+
+        if (currentUser.DateOfBirth.Value.AddYears(requirement.MinimumAge) <= DateOnly.FromDateTime(DateTime.Today))
         {
             logger.LogInformation("Authorization succeeded");
             context.Succeed(requirement);
@@ -31,7 +31,7 @@ public class MinimumAgeRequirementHandler(ILogger<MinimumAgeRequirementHandler> 
         {
             context.Fail();
         }
-        
+
         return Task.CompletedTask;
     }
 }
