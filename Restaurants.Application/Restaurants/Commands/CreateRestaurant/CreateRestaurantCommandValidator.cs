@@ -6,7 +6,7 @@ public class CreateRestaurantCommandValidator : AbstractValidator<CreateRestaura
 {
     private readonly string[] _categories =
     [
-        "FastFood", "Traditional", "Vegetarian", "Vegan", "Italian", "Mexican", "Chinese", "Japanese", "American"
+        "FastFood", "Traditional", "Vegetarian", "Vegan", "Italian", "Mexican", "Chinese", "Japanese", "American", "Indian"
     ];
 
     public CreateRestaurantCommandValidator()

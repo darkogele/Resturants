@@ -1,6 +1,8 @@
 ﻿using FluentAssertions;
+using FluentValidation.TestHelper;
 using Microsoft.AspNetCore.Http;
 using Moq;
+using Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 using Restaurants.Domain.Constants;
 using System.Security.Claims;
 using Xunit;
@@ -9,7 +11,7 @@ namespace Restaurants.Application.Users.Tests;
 
 public class UserContextTests
 {
-    [Fact()]
+    [Fact]
     public void GetCuuentUser_WithAUthenticatedUser_ShouldReturnCurrentUser()
     {
         // Arrange
@@ -44,7 +46,7 @@ public class UserContextTests
         currentUser.DateOfBirth.Should().Be(dateOfBirth);
     }
 
-    [Fact()]
+    [Fact]
     public void GetCurrentUser_WithUserContextNotPresent_ThrowsInvalidOperationException()
     {
         // Arrange
@@ -59,5 +61,42 @@ public class UserContextTests
         // Assert
         action.Should().Throw<InvalidOperationException>()
             .WithMessage("User is not authenticated.");
+    }
+
+    [Theory]
+    [InlineData("Italian")]
+    [InlineData("Mexican")]
+    [InlineData("Japanese")]
+    [InlineData("American")]
+    [InlineData("Indian")]
+    public void Validator_ForValidCategory_ShouldNotHaveValidationErrorsForCategoryProperty(string category)
+    {
+        // Arrange
+        var validator = new CreateRestaurantCommandValidator();
+        var command = new CreateRestaurantCommand { Category = category };
+
+        // At
+        var result = validator.TestValidate(command);
+
+        // Assert
+        result.ShouldNotHaveValidationErrorFor(c => c.Category);
+    }
+
+    [Theory]
+    [InlineData("10220")]
+    [InlineData("102-20")]
+    [InlineData("10 220")]
+    [InlineData("10-2 20")]
+    public void Validator_ForInvalidPostalCode_ShouldHaveValidationErrorsForPostalCodeProperty(string postalCode)
+    {
+        // Arrange
+        var validator = new CreateRestaurantCommandValidator();
+        var command = new CreateRestaurantCommand { PostalCode = postalCode };
+
+        // Act
+        var result = validator.TestValidate(command);
+
+        // Assert
+        result.ShouldHaveValidationErrorFor(c => c.PostalCode);
     }
 }

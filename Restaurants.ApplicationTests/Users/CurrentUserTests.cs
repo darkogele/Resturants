@@ -7,7 +7,7 @@ namespace Restaurants.Application.Users.Tests;
 public class CurrentUserTests
 {
     // TestMethod_Scenario_ExcepectedResult
-    [Theory()]
+    [Theory]
     [InlineData(UserRoles.Admin)]
     [InlineData(UserRoles.User)]
     public void IsInRole_WithMatchingRole_ShouldReturnTrue(string roleName)
@@ -22,7 +22,7 @@ public class CurrentUserTests
         isInRole.Should().BeTrue();
     }
 
-    [Fact()]
+    [Fact]
     public void IsInRole_WithMatchingRole_ShouldReturnFalse()
     {
         // Arrange
@@ -35,7 +35,7 @@ public class CurrentUserTests
         isInRole.Should().BeFalse();
     }
 
-    [Fact()]
+    [Fact]
     public void IsInRole_WithNoMatchingRoleCase_ShouldReturnFalse()
     {
         // Arrange
