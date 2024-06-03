@@ -7,7 +7,8 @@ using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Application.Restaurants.Commands.CreateRestaurant;
 
-public class CreateRestaurantCommandHandler(IMapper mapper,
+public class CreateRestaurantCommandHandler(
+    IMapper mapper,
     IRestaurantsRepository restaurantsRepository,
     ILogger<CreateRestaurantCommandHandler> logger,
     IUserContext userContext) : IRequestHandler<CreateRestaurantCommand, int>
