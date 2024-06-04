@@ -1,13 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Logging;
 using Restaurants.Application.Users;
 using Restaurants.Domain.Repositories;
 
 namespace Restaurants.Infrastructure.Authorization.Requirements;
 
-public class CreatedMultipleRestaurantsRequirementHandlerI(
+internal class CreatedMultipleRestaurantsRequirementHandler(
     IRestaurantsRepository restaurantsRepository,
-    ILogger<CreatedMultipleRestaurantsRequirementHandlerI> logger,
     IUserContext userContext)
     : AuthorizationHandler<CreatedMultipleRestaurantsRequirement>
 {

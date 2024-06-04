@@ -49,5 +49,4 @@ public class CreateRestaurantCommandValidatorTests
         result.ShouldHaveValidationErrorFor(c => c.ContactEmail);
         result.ShouldHaveValidationErrorFor(c => c.PostalCode);
     }
-
 }

@@ -9,7 +9,6 @@ using Restaurants.Domain.Constants;
 using FluentAssertions;
 using Restaurants.Domain.Exceptions;
 
-
 namespace Restaurants.Application.Restaurants.Commands.UpdateRestaurant.Tests;
 
 public class UpdateRestaurantCommandHandlerTests
