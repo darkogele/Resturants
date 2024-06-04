@@ -107,5 +107,4 @@ public class RestaurantsControllerTests : IClassFixture<WebApplicationFactory<Pr
         restaurantDto!.Name.Should().Be("Test");
         restaurantDto.Description.Should().Be("Test description");
     }
-
 }
